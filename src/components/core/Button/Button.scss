@@ -3,18 +3,36 @@
 .c-button {
   cursor: pointer;
   padding: $space-s $space-m;
+  margin: $space-xs;
   border: 0;
   border-radius: $space-xs;
 
-  background: $primary-color;
-  color: $white-color;
-  fill: $white-color;
   font-size: $fs-small;
 
-  &:hover {
+  &--primary {
+    background: $primary-color;
+    color: $white-color;
+    fill: $white-color;
+
+    &:hover {
+      background: $secondary-color;
+      color: $primary-color;
+      fill: $primary-color;
+      border: 1px solid $primary-color;
+    }
+  }
+
+  &--secondary {
     background: $secondary-color;
     color: $primary-color;
     fill: $primary-color;
     border: 1px solid $primary-color;
+
+    &:hover {
+      background: $primary-color;
+      color: $secondary-color;
+      fill: $secondary-color;
+      border: 1px solid $secondary-color;
+    }
   }
 }

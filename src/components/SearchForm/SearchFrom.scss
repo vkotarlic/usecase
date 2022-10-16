@@ -1,0 +1,41 @@
+@import 'variables.scss';
+
+.c-search {
+  padding: $space-m;
+  margin: $space-m;
+
+  background: $secondary-color;
+  border-radius: $space-xs;
+
+  display: flex;
+  flex-direction: column;
+
+  &__base {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__checkbox-group {
+    display: flex;
+    align-items: center;
+  }
+
+  &__checkbox-label {
+    margin: 0 $space-s;
+    font-size: $fs-small;
+  }
+
+  &__checkbox {
+    width: $space-m;
+    height: $space-m;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:checked {
+      accent-color: $primary-color;
+    }
+  }
+}

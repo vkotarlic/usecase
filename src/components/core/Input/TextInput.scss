@@ -1,20 +1,25 @@
 @import 'variables.scss';
 
 .c-text-input {
-  padding: $space-s;
-  margin: $space-s;
-  min-width: 250px;
+  display: flex;
+  align-items: center;
 
-  border: 1px solid $gray-color;
-  border-radius: $space-xs;
+  &__input {
+    padding: $space-s;
+    margin: $space-s;
+    min-width: 250px;
 
-  font-size: $fs-small;
+    border: 1px solid $gray-color;
+    border-radius: $space-xs;
 
-  &--error {
-    border: 1px solid $red-color;
-  }
+    font-size: $fs-small;
 
-  &:focus {
-    outline: 1px solid $primary-color;
+    &--error {
+      border: 1px solid $red-color;
+    }
+
+    &:focus {
+      outline: 1px solid $primary-color;
+    }
   }
 }

@@ -12,17 +12,17 @@ interface InputProps {
 
 const TextInput = ({ disabled, error, label, name, placeholder, onChange }: InputProps) => {
   return (
-    <React.Fragment>
+    <div className="c-text-input">
       {label && <label>{label}</label>}
       <input
-        className={`c-text-input ${error ? 'c-text-input--error' : ''}`}
+        className={`c-text-input__input ${error ? 'c-text-input__input--error' : ''}`}
         type="text"
         disabled={disabled}
         name={name}
         placeholder={placeholder}
         onChange={onChange}
       />
-    </React.Fragment>
+    </div>
   );
 };
 
