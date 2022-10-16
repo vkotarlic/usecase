@@ -1,0 +1,45 @@
+@import 'variables.scss';
+
+.c-menu {
+  &__button {
+    cursor: pointer;
+    padding: $space-xs $space-m;
+    border: 0;
+    border-radius: $space-xs;
+
+    background: $white-color;
+    color: $primary-color;
+    fill: $primary-color;
+    font-size: $fs-base;
+
+    &:hover {
+      background: $secondary-color;
+    }
+  }
+
+  &__items {
+    background: $white-color;
+    padding: $space-m 0;
+    margin: $space-l;
+    min-width: 150px;
+
+    border-radius: $space-xs;
+    filter: drop-shadow(0 0 0.25rem rgba(77, 77, 77, 0.2));
+
+    right: 1rem;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__item {
+    color: $primary-color;
+    padding: $space-s;
+    text-decoration: none;
+    text-align: center;
+
+    &--active {
+      background-color: $secondary-color;
+    }
+  }
+}

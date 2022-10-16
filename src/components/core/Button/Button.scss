@@ -1,0 +1,20 @@
+@import 'variables.scss';
+
+.c-button {
+  cursor: pointer;
+  padding: $space-s $space-m;
+  border: 0;
+  border-radius: $space-xs;
+
+  background: $primary-color;
+  color: $white-color;
+  fill: $white-color;
+  font-size: $fs-small;
+
+  &:hover {
+    background: $secondary-color;
+    color: $primary-color;
+    fill: $primary-color;
+    border: 1px solid $primary-color;
+  }
+}
