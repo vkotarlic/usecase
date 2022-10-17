@@ -1,20 +1,24 @@
 import React, { useState } from 'react';
+import { QueryData } from 'models/QueryData';
 import Button from 'components/core/Button/Button';
 import TextInput from 'components/core/Input/TextInput';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { useSetRecoilState } from 'recoil';
+import { QueryState } from 'state/state';
 import { ReactComponent as SearchIcon } from 'assets/SearchIcon.svg';
 import { ReactComponent as ChevronDown } from 'assets/ChevronDown.svg';
 import './SearchFrom.scss';
 
 const SearchFrom = () => {
   const [advancedSearch, setAdvancedSearch] = useState(false);
+  const setQueryState = useSetRecoilState(QueryState);
 
-  const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
-    console.log(e.currentTarget.value);
-  };
-
-  const handleClick = () => {
-    console.log('Click');
-  };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm<QueryData>();
+  const onSubmit: SubmitHandler<QueryData> = (data) => setQueryState(data);
 
   const toggleAdvancedSearch = () => {
     setAdvancedSearch(!advancedSearch);
@@ -29,35 +33,35 @@ const SearchFrom = () => {
   };
 
   return (
-    <form className="c-search">
+    <form className="c-search" onSubmit={handleSubmit(onSubmit)}>
       <section className="c-search__base">
         <TextInput
           label="Search by:"
-          name="searchBy"
           placeholder="Search by ..."
-          onChange={handleInput}
+          error={errors.searchBy?.type === 'minLength'}
+          {...register('searchBy', { minLength: 3 })}
         />
         <div className="c-search__checkbox-group">
           <label className="c-search__checkbox-label" htmlFor="name">
             Name
           </label>
-          <input className="c-search__checkbox" name="name" type="checkbox" />
+          <input
+            className="c-search__checkbox"
+            type="checkbox"
+            defaultChecked
+            {...register('name')}
+          />
           <label className="c-search__checkbox-label" htmlFor="description">
             Description
           </label>
-          <input className="c-search__checkbox" name="description" type="checkbox" />
+          <input className="c-search__checkbox" {...register('description')} type="checkbox" />
           <label className="c-search__checkbox-label" htmlFor="readme">
             Readme
           </label>
-          <input className="c-search__checkbox" name="readme" type="checkbox" />
+          <input className="c-search__checkbox" {...register('readme')} type="checkbox" />
         </div>
         <div>
-          <Button
-            label={<SearchIcon width={18} height={18} />}
-            style="primary"
-            type="submit"
-            onClick={handleClick}
-          />
+          <Button label={<SearchIcon width={18} height={18} />} style="primary" type="submit" />
           <Button
             label={<ChevronDown width={18} height={18} />}
             style="secondary"

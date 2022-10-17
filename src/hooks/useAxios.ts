@@ -1,29 +1,37 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { QueryData } from 'models/QueryData';
+import { queryBuilder } from 'utils/QueryBuilder';
 
 interface Payload {
   method: 'get' | 'post' | 'put' | 'delete';
-  searchBy: string;
-  query?: string;
+  query: QueryData;
 }
 
-export const useAxios = ({ method, searchBy, query }: Payload) => {
-  const [response, setResponse] = useState(null);
+interface Response {
+  id: number;
+  url: string;
+  language: string;
+}
+
+export const useAxios = ({ method, query }: Payload) => {
+  const [response, setResponse] = useState<Response[]>([]);
   const [error, setError] = useState('');
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const baseUrl = process.env.REACT_APP_URL || '';
 
   const fetchData = () => {
-    axios[method](`${baseUrl}/search/repositories?q=${searchBy}${query || ''}`)
-      .then((res) => setResponse(res.data))
+    setLoading(true);
+    axios[method](`${baseUrl}/search/repositories?q=${queryBuilder(query)}`)
+      .then((res) => setResponse(res.data.items))
       .catch((er) => setError(er))
       .finally(() => setLoading(false));
   };
 
   useEffect(() => {
-    fetchData();
-  }, [method, searchBy, query]);
+    if (query.searchBy !== '') fetchData();
+  }, [method, query]);
 
   return { response, error, loading };
 };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ForwardedRef, forwardRef } from 'react';
 import './TextInput.scss';
 
 interface InputProps {
@@ -7,14 +7,18 @@ interface InputProps {
   label?: string;
   name: string;
   placeholder: string;
-  onChange: (e: React.FormEvent<HTMLInputElement>) => void;
+  onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
 }
 
-const TextInput = ({ disabled, error, label, name, placeholder, onChange }: InputProps) => {
+const TextInput = (
+  { disabled, error, label, name, placeholder, onChange }: InputProps,
+  ref: ForwardedRef<HTMLInputElement>
+) => {
   return (
     <div className="c-text-input">
       {label && <label>{label}</label>}
       <input
+        ref={ref}
         className={`c-text-input__input ${error ? 'c-text-input__input--error' : ''}`}
         type="text"
         disabled={disabled}
@@ -26,4 +30,4 @@ const TextInput = ({ disabled, error, label, name, placeholder, onChange }: Inpu
   );
 };
 
-export default TextInput;
+export default forwardRef(TextInput);

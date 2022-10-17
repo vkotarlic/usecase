@@ -5,7 +5,7 @@ interface ButtonProps {
   type?: 'button' | 'submit' | 'reset';
   style: 'primary' | 'secondary';
   label: string | React.ReactNode;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const Button = ({ type, style, label, onClick }: ButtonProps) => {
