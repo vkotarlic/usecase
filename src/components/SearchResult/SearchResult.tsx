@@ -15,7 +15,12 @@ const SearchResult = (searchResult: SearchResponse) => {
         <img className="c-search-result__image" src={searchResult.owner.avatar_url} />
       </a>
       <div className="c-search-result__data">
-        <a className="c-search-result__title-container" href={searchResult.html_url}>
+        <a
+          className="c-search-result__title-container"
+          href={searchResult.html_url}
+          rel="noreferrer"
+          target="_blank"
+        >
           <h3 className="c-search-result__data-title">{searchResult.name}</h3>
         </a>
         <p className="c-search-result__data-description">{searchResult.description}</p>

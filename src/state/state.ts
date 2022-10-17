@@ -8,5 +8,5 @@ export const QueryState = atom<QueryData>({
 
 export const HistoryState = atom({
   key: 'HistoryState',
-  default: []
+  default: [] as QueryData[]
 });

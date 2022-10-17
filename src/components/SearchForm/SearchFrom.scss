@@ -38,4 +38,53 @@
       accent-color: $primary-color;
     }
   }
+
+  &__advanced-row {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__advanced-col {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__select {
+    width: 370px;
+    height: 35px;
+
+    margin: $space-m 0;
+  }
+
+  &__radio-group {
+    padding: $space-s;
+    margin: $space-s;
+
+    border: 1px solid $primary-color;
+    border-radius: $space-xs;
+  }
+
+  &__advanced-radio-label {
+    margin-right: $space-m;
+  }
+
+  &__advanced-radio-input:checked {
+    margin: $space-xs;
+    accent-color: $primary-color;
+  }
+
+  &__advanced-input {
+    padding: $space-s;
+    margin: $space-s 0;
+    min-width: 250px;
+
+    border: 1px solid $gray-color;
+    border-radius: $space-xs;
+
+    font-size: $fs-small;
+
+    &:focus {
+      outline: 1px solid $primary-color;
+    }
+  }
 }
