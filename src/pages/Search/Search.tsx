@@ -5,6 +5,7 @@ import { QueryState } from 'state/state';
 import { useAxios } from 'hooks/useAxios';
 import Loader from 'components/core/Loader/Loader';
 import './Search.scss';
+import SearchResult from 'components/SearchResult/SearchResult';
 
 const Search = () => {
   const queryState = useRecoilValue(QueryState);
@@ -15,7 +16,8 @@ const Search = () => {
       <SearchFrom />
       <div className="c-search-results">
         {loading && <Loader />}
-        {response.length > 0 && response.map((x) => <p key={x.id}>{x.url}</p>)}
+        {response.length > 0 &&
+          response.map((result) => <SearchResult key={result.id} {...result} />)}
       </div>
     </div>
   );

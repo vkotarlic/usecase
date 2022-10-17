@@ -2,20 +2,15 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { QueryData } from 'models/QueryData';
 import { queryBuilder } from 'utils/QueryBuilder';
+import { SearchResponse } from 'models/SearchResponse';
 
 interface Payload {
   method: 'get' | 'post' | 'put' | 'delete';
   query: QueryData;
 }
 
-interface Response {
-  id: number;
-  url: string;
-  language: string;
-}
-
 export const useAxios = ({ method, query }: Payload) => {
-  const [response, setResponse] = useState<Response[]>([]);
+  const [response, setResponse] = useState<SearchResponse[]>([]);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 

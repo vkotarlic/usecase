@@ -1,0 +1,21 @@
+@import 'variables.scss';
+
+.c-badge {
+  background: $primary-color;
+  color: $white-color;
+
+  max-width: fit-content;
+  margin: $space-xs;
+
+  border-radius: $space-m;
+
+  &--small {
+    padding: $space-xs $space-s;
+    font-size: $fs-small;
+  }
+
+  &--medium {
+    padding: $space-s $space-m;
+    font-size: $fs-base;
+  }
+}

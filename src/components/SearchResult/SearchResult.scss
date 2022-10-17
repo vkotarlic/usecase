@@ -1,0 +1,46 @@
+@import 'variables.scss';
+
+.c-search-result {
+  display: flex;
+
+  background: $secondary-color;
+  border-radius: $space-xs;
+
+  padding: $space-s;
+  margin: $space-s;
+  width: 50%;
+
+  &__image-container {
+    min-width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__image {
+    width: 100px;
+    height: 100px;
+    border-radius: $space-s;
+  }
+
+  &__data {
+    display: flex;
+    flex-direction: column;
+
+    margin: 0 $space-l;
+  }
+
+  &__title-container {
+    text-decoration: none;
+    color: $primary-color;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__data-title {
+    padding: 0;
+    margin: 0;
+  }
+}
