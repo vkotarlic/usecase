@@ -1,46 +1,42 @@
-# Getting Started with Create React App
+# Frontend use case
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is created with [Create React App](https://github.com/facebook/create-react-app).
+This is use case project for The IT solutions company. It uses Github public API for searching repositories.
 
-## Available Scripts
+## Running project
 
-In the project directory, you can run:
+Project is created using `npm` package manager so for running it you will need node installed on your machine.
+To start project first move to project directory and then run
 
-### `npm start`
+```sh
+npm install
+npm start
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This will install all necessary dependencies and run server in the development mode.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Code style and format
 
-### `npm test`
+Inside project there are `.eslint.json` and `.prettierrc` files created to enforce wanted code format and style.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Running `npm run lint` will check code for errors and running `npm run lint:fix` will fix all auto fixable errors.
 
-### `npm run build`
+Running `npm run format` will format code according to prettier configuration.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+For writing styles SASS is used together with BEM methodology.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Used libraries
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+In this project there is several libraries in use. But most important ones are
 
-### `npm run eject`
+- recoil - used for state management
+- react-use-form - used for managing form data
+- axios - used for sending HTTP requests
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Future steps
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Some improvements for future are:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Adding unit tests
+- Switching from plain css file to css modules
+- Separating advanced search part from search form component

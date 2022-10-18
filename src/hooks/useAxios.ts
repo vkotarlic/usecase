@@ -9,22 +9,33 @@ import { HistoryState } from 'state/state';
 interface Payload {
   method: 'get' | 'post' | 'put' | 'delete';
   query: QueryData;
+  pushToHistory?: boolean;
 }
 
-export const useAxios = ({ method, query }: Payload) => {
+export const useAxios = ({ method, query, pushToHistory }: Payload) => {
   const [response, setResponse] = useState<SearchResponse[]>([]);
+  const [totalCount, setTotalCount] = useState();
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [historyState, setHistoryState] = useRecoilState(HistoryState);
 
   const baseUrl = process.env.REACT_APP_URL || '';
+  const pageCount = process.env.REACT_APP_PAGE_COUNT;
 
   const fetchData = () => {
     setLoading(true);
-    axios[method](`${baseUrl}/search/repositories?q=${queryBuilder(query)}`)
+    axios[method](`${baseUrl}/search/repositories?q=${queryBuilder(query)}`, {
+      params: {
+        page: query.page,
+        per_page: pageCount,
+        sort: query.sortBy || 'default',
+        order: query.orderBy
+      }
+    })
       .then((res) => {
         setResponse(res.data.items);
-        setHistoryState([...historyState, query]);
+        setTotalCount(res.data.total_count);
+        if (pushToHistory) setHistoryState([...historyState, query]);
       })
       .catch((er) => setError(er))
       .finally(() => setLoading(false));
@@ -34,5 +45,5 @@ export const useAxios = ({ method, query }: Payload) => {
     if (query.searchBy !== '') fetchData();
   }, [method, query]);
 
-  return { response, error, loading };
+  return { response, totalCount, error, loading };
 };

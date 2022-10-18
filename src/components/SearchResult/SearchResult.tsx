@@ -3,9 +3,14 @@ import { SearchResponse } from 'models/SearchResponse';
 import './SearchResult.scss';
 import Badge from 'components/core/Badge/Badge';
 
-const SearchResult = (searchResult: SearchResponse) => {
+interface SearchResultProps {
+  searchResult: SearchResponse;
+  size?: 'small' | 'large';
+}
+
+const SearchResult = ({ searchResult, size }: SearchResultProps) => {
   return (
-    <div className="c-search-result">
+    <div className={`c-search-result ${size === 'large' ? 'c-search-result--large' : ''}`}>
       <a
         className="c-search-result__image-container"
         href={searchResult.owner.html_url}

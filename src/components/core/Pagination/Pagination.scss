@@ -1,0 +1,14 @@
+@import 'variables.scss';
+
+.c-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__number {
+    padding: $space-m;
+
+    font-size: $fs-medium;
+    font-weight: $fw-semi-bold;
+  }
+}

@@ -1,0 +1,32 @@
+@import 'variables.scss';
+
+.c-history {
+  display: flex;
+
+  &__queries {
+    width: 30%;
+    height: 90vh;
+    padding: $space-s;
+
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    overflow-y: auto;
+
+    background: $secondary-color;
+  }
+
+  &__search {
+    width: 70%;
+    height: 90vh;
+    padding: $space-m;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    overflow-y: auto;
+  }
+}

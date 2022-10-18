@@ -11,6 +11,7 @@ import Select from 'react-select';
 import './SearchFrom.scss';
 import { languages } from 'utils/Languages';
 import { topics } from 'utils/Topics';
+import { emptyQueryData } from 'utils/EmptyQueryData';
 
 const SearchFrom = () => {
   const [advancedSearch, setAdvancedSearch] = useState(false);
@@ -27,21 +28,6 @@ const SearchFrom = () => {
 
   const toggleAdvancedSearch = () => {
     setAdvancedSearch(!advancedSearch);
-  };
-
-  const resetValues: QueryData = {
-    searchBy: '',
-    userName: '',
-    name: true,
-    description: false,
-    readme: false,
-    languages: [],
-    organization: '',
-    topics: [],
-    starsComparison: undefined,
-    starsNumber: undefined,
-    sizeComparison: undefined,
-    sizeNumber: undefined
   };
 
   const renderAdvancedSearch = () => {
@@ -212,7 +198,7 @@ const SearchFrom = () => {
           </div>
         </div>
         <div>
-          <Button label="Reset" style="primary" onClick={() => reset(resetValues)} />
+          <Button label="Reset" style="primary" onClick={() => reset(emptyQueryData)} />
         </div>
       </section>
     );

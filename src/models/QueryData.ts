@@ -13,4 +13,7 @@ export interface QueryData {
   sizeComparison?: string;
   dateComparison?: string;
   date?: string;
+  page?: number;
+  sortBy?: string;
+  orderBy?: string;
 }
